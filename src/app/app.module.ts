@@ -10,10 +10,14 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import {MatButtonModule} from '@angular/material/button';
+import { MenuComponent } from './menu/menu.component';
+import { HomeComponent } from './home/home.component';
+
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, MenuComponent, HomeComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, MatButtonModule],
   providers: [
     StatusBar,
     SplashScreen,
