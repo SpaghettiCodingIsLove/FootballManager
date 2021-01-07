@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { DatabaseService } from '../services/database.service';
 
 @Component({
   selector: 'app-tables',
@@ -6,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tables.component.scss'],
 })
 export class TablesComponent implements OnInit {
+  players = [];
+  player = {};
+  constructor(public navCtrl: NavController, private databseProvider: DatabaseService) { 
+    this.databseProvider.getDatabaseState().subscribe(rdy => {
+      if (rdy) {
+        this.loadPlayerData();
+      }
+    })
+  }
 
-  constructor() { }
-
+  loadPlayerData() {
+    this.databseProvider.getAllPlayers().then(data => {
+      this.players = data;
+    });
+  }
+  
   ngOnInit() {}
 
 }

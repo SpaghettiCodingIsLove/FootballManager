@@ -1,3 +1,15 @@
-<p>
-  tables works!
-</p>
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+            Players
+        </ion-list-header>
+
+        <ion-item lines="inset" *ngFor="let player of players">
+            <ion-label>
+                <h5>{{player.Name}}</h5>
+                <p>{{player.Surname}}</p>
+            </ion-label>
+
+        </ion-item>
+    </ion-list>
+</ion-content>
