@@ -47,6 +47,12 @@ export class DatabaseService {
     });
   }
 
+  removePlayer() {
+    return this.database.executeSql("delete from players where id = 3", []).then(res => {
+      return res;
+    });
+  }
+
   getAllPlayers() {
     return this.database.executeSql("SELECT * FROM players", []).then(data => {
       let players = [];

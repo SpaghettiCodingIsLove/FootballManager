@@ -23,7 +23,13 @@ export class TablesComponent implements OnInit {
       this.players = data;
     });
   }
-  
+
+  removePlayer() {
+    this.databseProvider.removePlayer().then(data => {
+      data.loadPlayerData();
+    });
+  }
+
   ngOnInit() {}
 
 }

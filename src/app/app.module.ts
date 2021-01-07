@@ -20,6 +20,7 @@ import { TeamComponent } from './team/team.component';
 import { TransfersComponent } from './transfers/transfers.component';
 
 import {MatButtonModule} from '@angular/material/button';
+import {MatListModule} from '@angular/material/list';
 
 import { IonicStorageModule } from '@ionic/storage';
 import { HttpClientModule } from '@angular/common/http';
@@ -29,7 +30,7 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
 @NgModule({
   declarations: [AppComponent, MenuComponent, HomeComponent, JuniorsComponent, SaveComponent, ScheduleComponent, TablesComponent, TeamComponent, TransfersComponent],
   entryComponents: [],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, MatButtonModule, IonicStorageModule.forRoot(), HttpClientModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, BrowserAnimationsModule, MatButtonModule, IonicStorageModule.forRoot(), HttpClientModule, MatListModule],
   providers: [
     StatusBar,
     SplashScreen,
