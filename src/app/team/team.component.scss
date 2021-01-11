@@ -1,0 +1,67 @@
+ion-content {
+    --ion-background-color: #87CEFA;
+    border: 3px solid black;
+}
+
+.block {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    border-bottom: 1px solid black;
+}
+
+.block .clubInfo {
+    margin-top: 5px;
+    margin-bottom: 5%;
+}
+
+.block .clubInfo .row {
+    font-size: 110%;
+}
+
+
+.Players {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+.Players p {
+    margin-right: 5%;
+    font-size: 110%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.block .playerInfo {
+    margin-top: 5px;
+    margin-bottom: 5%;
+}
+
+.block .playerInfo .row {
+    font-size: 110%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 30%;
+}
+
+@media only screen and (min-width: 500px) {
+    .block {
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 15%;
+    }
+}
