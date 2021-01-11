@@ -1,0 +1,57 @@
+ion-content {
+    --ion-background-color: #87CEFA;
+    border: 3px solid black;
+}
+
+.block {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+mat-select {
+    width: 40%;
+    margin: 5%;
+    border-bottom: 1px solid black;
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.results p {
+    font-size: 100%;
+    margin-right: 10px;
+}
+
+select {
+    width: 45%;
+    margin-right: 5%;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+
+@media only screen and (min-width: 500px) {
+    .block p {
+        font-size: 175%;
+        margin-right: 5px;
+    }
+
+    .results p {
+        font-size: 150%;
+        margin-right: auto;
+    }
+}

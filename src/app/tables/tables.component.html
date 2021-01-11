@@ -1,9 +1,30 @@
 <ion-content>
-    <button mat-raised-button (click)="removePlayer()">TEST</button>
-    <mat-list style="overflow-y: auto;">
-        <mat-list-item *ngFor="let player of players">
-            <div mat-line>{{player.Name}}</div>
-            <div mat-line> {{player.Surname}} </div>
-        </mat-list-item>
-    </mat-list>
+    <!--
+        <button mat-raised-button (click)="removePlayer()">TEST</button>
+        <mat-list style="overflow-y: auto;">
+            <mat-list-item *ngFor="let player of players">
+                <div mat-line>{{player.Name}}</div>
+                <div mat-line> {{player.Surname}} </div>
+            </mat-list-item>
+        </mat-list> -->
+
+    <div class="league">
+        <p>Liga</p>
+        <mat-select disableRipple>
+            <mat-option value="1">Option 1</mat-option>
+            <mat-option value="2">Option 2</mat-option>
+            <mat-option value="3">Option 3</mat-option>
+        </mat-select>
+    </div>
+    <div class="results">
+        <p></p>
+        <p>Dru¿yna</p>
+        <p>Mecze</p>
+        <p>W</p>
+        <p>D</p>
+        <p>G+</p>
+        <p>G-</p>
+        <p>Bilans</p>
+        <p>Mecze</p>
+    </div>
 </ion-content>

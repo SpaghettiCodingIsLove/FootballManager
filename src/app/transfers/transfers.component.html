@@ -1,3 +1,149 @@
-<p>
-  transfers works!
-</p>
+<ion-content>
+    <div>
+        <div class="block">
+            <div class="options">
+                <div class="row">
+                    <p>Imiê</p>
+                    <mat-form-field>
+                        <input matInput placeholder="imie" class="inputText" id="name" type="text">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <p>Nazwisko</p>
+                    <mat-form-field>
+                        <input matInput placeholder="nazwisko" class="inputText" id="surname" type="text">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <p>Pozycja</p>
+                    <mat-select disableRipple>
+
+                    </mat-select>
+                </div>
+                <div class="row">
+                    <p>Liga</p>
+                    <mat-select disableRipple>
+
+                    </mat-select>
+                </div>
+                <div class="row">
+                    <p>Klub</p>
+                    <mat-select disableRipple>
+
+                    </mat-select>
+                </div>
+                <div class="row">
+                    <p>Kraj</p>
+                    <mat-select disableRipple>
+
+                    </mat-select>
+                </div>
+                <div class="row">
+                    <p>Wartoœæ max</p>
+                    <mat-form-field>
+                        <input matInput placeholder="wartoœæ max" class="inputText" id="maxValue" type="number">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <p>Wiek max</p>
+                    <mat-select disableRipple>
+
+                    </mat-select>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <div class="information">
+                <p>Imie</p>
+                <p>Nazwisko</p>
+                <p>Pozycja</p>
+                <p>Ocena</p>
+            </div>
+        </div>
+        <div class="block">
+            <div class="showPlayers">
+                <div class="row">
+                    <p>Ocena ogólna</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Potencja³</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Defensywa</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Ofensywa</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Podania</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Um. bramkarskie</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Imiê</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Nazwisko</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Klub</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Kraj</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Data urodzenia</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>D³ugoœæ kontraktu</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Wartoœæ</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Pensja</p>
+                    <p>00</p>
+                </div>
+                <div class="row">
+                    <p>Kwota transferu</p>
+                    <mat-form-field>
+                        <input matInput placeholder="kwota kontraktu" class="inputText" id="transferValue" type="number">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <p>Pensja</p>
+                    <mat-form-field>
+                        <input matInput placeholder="pensja" class="inputText" id="salary" type="number">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <p>D³ugoœæ kontraktu</p>
+                    <mat-form-field>
+                        <input matInput placeholder="d³ugoœæ" class="inputText" id="contractLength" type="number">
+                    </mat-form-field>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <div class="buttons">
+                <button mat-raised-button (click)="clear()" color="primary">Wyczyœæ</button>
+                <button mat-raised-button (click)="buyPlayer()" color="primary">Kup</button>
+                <button mat-raised-button (click)="search()" color="primary">Wyszukaj</button>
+            </div>
+        </div>
+    </div>
+</ion-content>

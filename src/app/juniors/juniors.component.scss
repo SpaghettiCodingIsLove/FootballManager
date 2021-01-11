@@ -1,0 +1,73 @@
+ion-content {
+    --ion-background-color: #87CEFA;
+    border: 3px solid black;
+}
+
+.block {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-top: 5%;
+    border-bottom: 1px solid black;
+}
+
+.block .options {
+    margin-top: 5px;
+    margin-bottom: 5%;
+}
+
+.block .options .row {
+    font-size: 110%;
+    padding-top: 10px;
+}
+
+.block .options .row mat-select {
+    width: 60%;
+    border-bottom: 1px solid black;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10%;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+}
+
+.block .showPlayers {
+    margin-top: 5px;
+    margin-bottom: 5%;
+}
+
+.block .showPlayers .row {
+    font-size: 110%;
+}
+
+.information {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5%;
+}
+
+.information p {
+    min-height: 150px;
+    margin-right: 5%;
+    font-size: 110%;
+}
+
+@media only screen and (min-width: 500px) {
+    .block {
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 15%;
+    }
+}

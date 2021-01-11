@@ -1,7 +1,12 @@
-<button mat-raised-button color="accent">Następna gra</button>
-<button mat-raised-button color="primary">Drużyna</button>
-<button mat-raised-button color="primary">Juniorzy</button>
-<button mat-raised-button color="primary">Transfery</button>
-<button mat-raised-button color="primary">Terminarz</button>
-<button mat-raised-button color="primary">Tabele</button>
-<button mat-raised-button color="primary">Zamknij</button>
+<ion-content>
+    <div class="buttons">
+        <button mat-raised-button (click)="nextGame()" color="primary" class="but">Następna gra</button>
+        <button mat-raised-button (click)="team()" color="primary" class="but">Drużyna</button>
+        <button mat-raised-button (click)="juniors()" color="primary" class="but">Juniorzy</button>
+        <button mat-raised-button (click)="transfers()" color="primary" class="but">Transfery</button>
+        <button mat-raised-button (click)="schedule()" color="primary" class="but">Terminarz</button>
+        <button mat-raised-button (click)="tables()" color="primary" class="but">Tabele</button>
+        <button mat-raised-button (click)="exit()" color="primary" class="but">Zamknij</button>
+        <button mat-raised-button (click)="nextSeason()" color="primary" class="but">Następny sezon</button>
+    </div>
+</ion-content>

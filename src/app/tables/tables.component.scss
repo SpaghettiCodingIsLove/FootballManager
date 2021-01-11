@@ -1,0 +1,51 @@
+ion-content {
+    --ion-background-color: #87CEFA;
+    border: 3px solid black;
+}
+
+.league {
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.league p {
+    font-size: 150%;
+    margin-right: 5px;
+}
+
+.results {
+    display: flex;
+    justify-content: space-between;
+    width: 90%;
+    margin-top: 5px;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.results p {
+    font-size: 110%;
+    margin-right: 3px;
+}
+
+mat-select {
+    width: 60%;
+    border-bottom: 1px solid black;
+}
+
+
+@media only screen and (min-width: 500px) {
+    .league p {
+        font-size: 175%;
+        margin-right: 5px;
+    }
+
+    .results p {
+        font-size: 150%;
+        margin-right: auto;
+    }
+}
