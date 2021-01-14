@@ -70,6 +70,56 @@ export class DatabaseService {
     })
   }
 
+  getBundesligaTable(){
+    return this.database.executeSql("SELECT name, points, played, scored_goals, lost_goals, wins, loses, draws FROM club where league = 2 order by points desc, scored_goals desc, lost_goals asc", []).then(
+      data => {
+        let table = [];
+        if(data.rows.length > 0)
+        {
+          for(var i=0; i< data.rows.length; i++){
+            table.push({
+              Name: data.rows.item(i).name,
+              Points: data.rows.item(i).points,
+              Played: data.rows.item(i).played,
+              Scored_goals: data.rows.item(i).scored_goals,
+              Lost_goals: data.rows.item(i).lost_goals,
+              Wins: data.rows.item(i).wins,
+              Lost: data.rows.item(i).loses,
+              Draws: data.rows.item(i).draws
+            })
+          }
+        }
+        return table;
+      },
+      err => {return [];}
+    )
+  }
+
+  getPremierLeagueTable(){
+    return this.database.executeSql("SELECT name, points, played, scored_goals, lost_goals, wins, loses, draws FROM club where league = 1 order by points desc, scored_goals desc, lost_goals asc", []).then(
+      data => {
+        let table = [];
+        if(data.rows.length > 0)
+        {
+          for(var i=0; i< data.rows.length; i++){
+            table.push({
+              Name: data.rows.item(i).name,
+              Points: data.rows.item(i).points,
+              Played: data.rows.item(i).played,
+              Scored_goals: data.rows.item(i).scored_goals,
+              Lost_goals: data.rows.item(i).lost_goals,
+              Wins: data.rows.item(i).wins,
+              Lost: data.rows.item(i).loses,
+              Draws: data.rows.item(i).draws
+            })
+          }
+        }
+        return table;
+      },
+      err => {return [];}
+    )
+  }
+
   getDatabaseState() {
     return this.databaseReady.asObservable();
   }
