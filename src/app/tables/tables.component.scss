@@ -1,21 +1,34 @@
 ion-content {
+    width: 100%;
+    height: 100vh;
     --ion-background-color: #87CEFA;
-    border: 3px solid black;
 }
 
 .league {
     display: flex;
     justify-content: center;
-    width: 80%;
+    width: 100%;
+    height: 50px;
     margin-top: 5%;
     margin-bottom: 5%;
-    margin-left: 10%;
-    margin-right: 10%;
 }
 
 .league p {
-    font-size: 150%;
-    margin-right: 5px;
+    width: 40%;
+    height: 100%;
+    text-align: center;
+    padding-top: 15px;
+    font-size: 15px;
+    float: left;
+}
+
+.league mat-select {
+    width: 50%;
+    height: 80%;
+    margin-top: 5%;
+    border-bottom: 1px solid black;
+    margin-right: 10%;
+    float: left;
 }
 
 .results {
@@ -28,20 +41,42 @@ ion-content {
 }
 
 .results p {
-    font-size: 110%;
-    margin-right: 3px;
+    width: 40%;
+    height: 100%;
+    font-size: 20px;
 }
 
-mat-select {
-    width: 60%;
-    border-bottom: 1px solid black;
+#bundesligaTable{
+    display: none;
+    width: 100%;
+    float: left;
 }
 
+#premierLeagueTable{
+    display: none;
+    width: 100%;
+    height: auto;
+    float: left;
+}
+
+mat-list mat-list-item{
+    width: 100%;
+    font-size: 15px;
+    text-align: center;
+    float: left;
+}
+
+mat-list mat-list-item{
+    width: 100%;
+    height: 30px;
+    float: left;
+    display: flex;
+    justify-content: space-between;
+}
 
 @media only screen and (min-width: 500px) {
     .league p {
-        font-size: 175%;
-        margin-right: 5px;
+        font-size: 20px;
     }
 
     .results p {
