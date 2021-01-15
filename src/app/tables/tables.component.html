@@ -1,13 +1,4 @@
 <ion-content>
-    <!--
-        <button mat-raised-button (click)="removePlayer()">TEST</button>
-        <mat-list style="overflow-y: auto;">
-            <mat-list-item *ngFor="let player of players">
-                <div mat-line>{{player.Name}}</div>
-                <div mat-line> {{player.Surname}} </div>
-            </mat-list-item>
-        </mat-list> -->
-
     <div class="league">
         <p>Liga</p>
         <mat-select (selectionChange)="leagueChanged($event)" disableRipple>
@@ -15,31 +6,38 @@
             <mat-option value="Premier League">Premier League</mat-option>
         </mat-select>
     </div>
-    <div id="test">
-
+    <div id="tableHeader">
+        <div mat-cell style="width: 30%; font-size: 12px; margin-right: 1px solid #1e1e1e;">Name</div>
+        <div mat-cell style="width: 10%; font-size: 12px; margin-right: 1px solid #1e1e1e;">Points</div>
+        <div mat-cell style="width: 10%; font-size: 12px; margin-right: 1px solid #1e1e1e;">Played</div>
+        <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;">SG</div>
+        <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;">LG</div>
+        <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;">W</div>
+        <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;">L</div>
+        <div mat-cell style="width: 10%;">D</div>
     </div>
     <mat-list id="bundesligaTable" style="overflow-y: auto;">
-        <mat-list-item *ngFor="let Bclub of BundesligaTable">
-            <div mat-line>{{Bclub.Name}}</div>
-            <div mat-line> {{Bclub.Points}} </div>
-            <div mat-line> {{Bclub.Played}} </div>
-            <div mat-line> {{Bclub.Scored_Goals}} </div>
-            <div mat-line> {{Bclub.Lost_Goals}} </div>
-            <div mat-line> {{Bclub.Wins}} </div>
-            <div mat-line> {{Bclub.Lost}} </div>
-            <div mat-line> {{Bclub.Draws}} </div>
+        <mat-list-item class="listItem" *ngFor="let Bclub of BundesligaTable">
+            <div mat-cell style="width: 30%; font-size: 10px; margin-right: 1px solid #1e1e1e;">{{Bclub.Name}}</div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{Bclub.Points}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{Bclub.Played}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{Bclub.Scored_goals}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{Bclub.Lost_goals}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{Bclub.Wins}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{Bclub.Lost}} </div>
+            <div mat-cell style="width: 10%;"> {{Bclub.Draws}} </div>
         </mat-list-item>
     </mat-list>
     <mat-list id="premierLeagueTable" style="overflow-y: auto;">
-        <mat-list-item *ngFor="let PLclub of PremierLeagueTable">
-            <div mat-line>{{PLclub.Name}}</div>
-            <div mat-line> {{PLclub.Points}} </div>
-            <div mat-line> {{PLclub.Played}} </div>
-            <div mat-line> {{PLclub.Scored_Goals}} </div>
-            <div mat-line> {{PLclub.Lost_Goals}} </div>
-            <div mat-line> {{PLclub.Wins}} </div>
-            <div mat-line> {{PLclub.Lost}} </div>
-            <div mat-line> {{PLclub.Draws}} </div>
+        <mat-list-item class="listItem" *ngFor="let PLclub of PremierLeagueTable">
+            <div mat-cell style="width: 30%; font-size: 10px; margin-right: 1px solid #1e1e1e;">{{PLclub.Name}}</div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{PLclub.Points}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{PLclub.Played}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{PLclub.Scored_goals}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{PLclub.Lost_goals}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{PLclub.Wins}} </div>
+            <div mat-cell style="width: 10%; margin-right: 1px solid #1e1e1e;"> {{PLclub.Lost}} </div>
+            <div mat-cell style="width: 10%;"> {{PLclub.Draws}} </div>
         </mat-list-item>
     </mat-list>
 </ion-content>
