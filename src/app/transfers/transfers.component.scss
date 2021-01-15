@@ -1,6 +1,7 @@
 ion-content {
     --ion-background-color: #87CEFA;
-    border: 3px solid black;
+    width: 100%;
+    height: 100vh;
 }
 
 .block {
@@ -17,11 +18,18 @@ ion-content {
 }
 
 .block .options .row {
-    font-size: 110%;
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 15px;
 }
 
 .block .options .row input {
     width: 80%;
+}
+
+.block .options .row button{
+    width: 30%;
+    margin-left: 35%;
 }
 
 .block .options .row mat-select {
@@ -51,7 +59,9 @@ ion-content {
 }
 
 .block .showPlayers .row {
-    font-size: 110%;
+    width: 100%;
+    font-size: 15px;
+    margin-bottom: 15px;
 }
 
 .block .showPlayers .row input {
@@ -67,6 +77,10 @@ ion-content {
     display: flex;
     justify-content: space-between;
     margin-bottom: 30%;
+}
+
+#Zawodnicy{
+    display: none;
 }
 
 @media only screen and (min-width: 500px)  {

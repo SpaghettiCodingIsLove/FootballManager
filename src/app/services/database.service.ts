@@ -53,6 +53,44 @@ export class DatabaseService {
     });
   }
 
+  buyPlayer(newSalary, contractLength, playerId){
+    return this.database.executeSql("UPDATE players set salary = "+newSalary+", contract_terminates = '"+contractLength+"', club = 2 where id = "+playerId, []).then(res =>{
+      return res;
+    })
+  }
+
+  selectPlayers(query){
+    return this.database.executeSql(query, []).then(data =>{
+      let players = [];
+      if (data.rows.length > 0){
+        for (var i = 0; i < data.rows.length; i++) {
+          players.push({
+            Id: data.rows.item(i).id,
+            Name: data.rows.item(i).name,
+            Surname: data.rows.item(i).surname,
+            DateofBirth: data.rows.item(i).dateofbirth,
+            Position: data.rows.item(i).position,
+            Club: data.rows.item(i).club,
+            ClubId: data.rows.item(i).clubId,
+            Nationality: data.rows.item(i).nationality,
+            Value: data.rows.item(i).value,
+            Salary: data.rows.item(i).salary,
+            Contract: data.rows.item(i).contract_terminates,
+            Overall: data.rows.item(i).overall,
+            Offense: data.rows.item(i).offense,
+            Defence: data.rows.item(i).defence,
+            Potential: data.rows.item(i).potential,
+            Pass: data.rows.item(i).pass,
+            Gk: data.rows.item(i).gk
+          })
+        }
+      }
+      return players;
+    }, err => {
+      return [];
+    })
+  }
+
   getAllPlayers() {
     return this.database.executeSql("SELECT * FROM players", []).then(data => {
       let players = [];
@@ -86,6 +124,44 @@ export class DatabaseService {
               Wins: data.rows.item(i).wins,
               Lost: data.rows.item(i).loses,
               Draws: data.rows.item(i).draws
+            })
+          }
+        }
+        return table;
+      },
+      err => {return [];}
+    )
+  }
+
+  getAllClubs(){
+    return this.database.executeSql("SELECT id, name from club where id != 2", []).then(
+      data => {
+        let table = [];
+        if(data.rows.length > 0)
+        {
+          for(var i=0; i< data.rows.length; i++){
+            table.push({
+              Name: data.rows.item(i).name,
+              Id: data.rows.item(i).id
+            })
+          }
+        }
+        return table;
+      },
+      err => {return [];}
+    )
+  }
+
+  getCountries(){
+    return this.database.executeSql("SELECT id, name from country", []).then(
+      data => {
+        let table = [];
+        if(data.rows.length > 0)
+        {
+          for(var i=0; i< data.rows.length; i++){
+            table.push({
+              Name: data.rows.item(i).name,
+              Id: data.rows.item(i).id
             })
           }
         }
