@@ -1,27 +1,83 @@
 <ion-content>
     <div class="block">
-        <mat-select disableRipple>
-            <mat-option value="1">Option 1</mat-option>
-            <mat-option value="2">Option 2</mat-option>
-            <mat-option value="3">Option 3</mat-option>
+        <mat-select id="liga" (selectionChange)="leagueChanged($event)" disableRipple>
+            <mat-option value="Bundesliga">Bundesliga</mat-option>
+            <mat-option value="Premier League">Premier League</mat-option>
         </mat-select>
-        <mat-select disableRipple>
-            <mat-option value="1">Option 1</mat-option>
-            <mat-option value="2">Option 2</mat-option>
-            <mat-option value="3">Option 3</mat-option>
+        <mat-select id="kolejka" (selectionChange)="matchdayChanged($event)" disableRipple>
+            <mat-option value="1">Kolejka 1</mat-option>
+            <mat-option value="2">Kolejka 2</mat-option>
+            <mat-option value="3">Kolejka 3</mat-option>
+            <mat-option value="4">Kolejka 4</mat-option>
+            <mat-option value="5">Kolejka 5</mat-option>
+            <mat-option value="6">Kolejka 6</mat-option>
+            <mat-option value="7">Kolejka 7</mat-option>
+            <mat-option value="8">Kolejka 8</mat-option>
+            <mat-option value="9">Kolejka 9</mat-option>
+            <mat-option value="10">Kolejka 10</mat-option>
+            <mat-option value="11">Kolejka 11</mat-option>
+            <mat-option value="12">Kolejka 12</mat-option>
+            <mat-option value="13">Kolejka 13</mat-option>
+            <mat-option value="14">Kolejka 14</mat-option>
+            <mat-option value="15">Kolejka 15</mat-option>
+            <mat-option value="16">Kolejka 16</mat-option>
+            <mat-option value="17">Kolejka 17</mat-option>
+            <mat-option value="18">Kolejka 18</mat-option>
+            <mat-option value="19">Kolejka 19</mat-option>
+            <mat-option value="20">Kolejka 20</mat-option>
+            <mat-option value="21">Kolejka 21</mat-option>
+            <mat-option value="22">Kolejka 22</mat-option>
+            <mat-option value="23">Kolejka 23</mat-option>
+            <mat-option value="24">Kolejka 24</mat-option>
+            <mat-option value="25">Kolejka 25</mat-option>
+            <mat-option value="26">Kolejka 26</mat-option>
+            <mat-option value="27">Kolejka 27</mat-option>
+            <mat-option value="28">Kolejka 28</mat-option>
+            <mat-option value="29">Kolejka 29</mat-option>
+            <mat-option value="30">Kolejka 30</mat-option>
+            <mat-option value="31">Kolejka 31</mat-option>
+            <mat-option value="32">Kolejka 32</mat-option>
+            <mat-option value="33">Kolejka 33</mat-option>
+            <mat-option value="34">Kolejka 34</mat-option>
+            <mat-option value="35">Kolejka 35</mat-option>
+            <mat-option value="36">Kolejka 36</mat-option>
+            <mat-option value="37">Kolejka 37</mat-option>
+            <mat-option value="38">Kolejka 38</mat-option>
         </mat-select>
     </div>
 
     <div class="buttons">
-        <button mat-raised-button (click)="clear()" color="primary">Wyczyœæ</button>
+        <button mat-raised-button (click)="szukaj()" color="primary">Szukaj</button>
+        <button mat-raised-button (click)="clear()" color="primary">WyczyÅ›Ä‡</button>
     </div>
 
-    <div class="results">
-        <p>Gosp.</p>
-        <p>Gole gosp.</p>
-        <p>Gole goœcia</p>
-        <p>Goœæ</p>
-        <p>Dzieñ meczu</p>
-        <p>Data</p>
+    <div id="tableHeader">
+        <div mat-cell style="width: 30%; font-size: 12px;">Gosp.</div>
+        <div mat-cell style="width: 10%;">GH</div>
+        <div mat-cell style="width: 10%;">GV</div>
+        <div mat-cell style="width: 30%; font-size: 12px;">GoÅ›Ä‡</div>
+        <div mat-cell style="width: 20%;">Kolejka</div>
     </div>
+
+    <mat-list id="bundesligaSchedule" style="overflow-y: auto;">
+        <mat-list-item class="listItem" *ngFor="let Bmatch of BundesligaMatchday">
+            <div mat-cell style="width: 30%; font-size: 10px;">{{Bmatch.Host}}</div>
+            <div mat-cell style="width: 10%;"> {{Bmatch.GH}} </div>
+            <div mat-cell style="width: 10%;"> {{Bmatch.VG}} </div>
+            <div mat-cell style="width: 30%; font-size: 10px;"> {{Bmatch.Visitor}} </div>
+            <div mat-cell style="width: 20%;"> {{Bmatch.Matchday}} </div>
+        </mat-list-item>
+    </mat-list>
+
+    <mat-list id="premierLeagueSchedule" style="overflow-y: auto;">
+        <mat-list-item class="listItem" *ngFor="let PLmatch of PremierLeagueMatchday">
+            <div mat-cell style="width: 30%; font-size: 10px;">{{PLmatch.Host}}</div>
+            <div mat-cell style="width: 10%;"> {{PLmatch.GH}} </div>
+            <div mat-cell style="width: 10%;"> {{PLmatch.VG}} </div>
+            <div mat-cell style="width: 30%; font-size: 10px;"> {{PLmatch.Visitor}} </div>
+            <div mat-cell style="width: 20%;"> {{PLmatch.Matchday}} </div>
+        </mat-list-item>
+    </mat-list>
+
+
 </ion-content>
