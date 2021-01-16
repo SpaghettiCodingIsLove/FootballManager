@@ -3,6 +3,18 @@
         <div class="block">
             <div id="opcjeSzukania" class="options">
                 <div class="row">
+                    <p>Imię</p>
+                    <mat-form-field>
+                        <input matInput placeholder="imie" class="inputText" id="name" type="text" (change)="nameUpdated($event)">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <p>Nazwisko</p>
+                    <mat-form-field>
+                        <input matInput placeholder="nazwisko" class="inputText" id="surname" type="text" (change)="surnameUpdated($event)">
+                    </mat-form-field>
+                </div>
+                <div class="row">
                     <p>Pozycja</p>
                     <mat-select (selectionChange)="positionChanged($event)" disableRipple>
                         <mat-option value="Striker">Striker</mat-option>
@@ -37,7 +49,7 @@
                 <div class="row">
                     <p>Wartość</p>
                     <mat-form-field>
-                        <input matInput placeholder="wartość max" class="inputText" id="maxValue" type="number">
+                        <input matInput placeholder="wartość max" class="inputText" id="maxValue" type="number" (change)="maxValueUpdated($event)">
                     </mat-form-field>
                 </div>
                 <div class="row">
@@ -45,7 +57,7 @@
                 </div>
             </div>
         </div>
-        <div id="Zawodnicy" class="block">
+        <div id="Zawodnicy" class="block" style="margin-bottom: 60px;">
             <div class="showPlayers">
                 <div class="row">
                     <button mat-raised-button (click)="zamknij()" color="primary">ZAMKNIJ</button>
@@ -117,19 +129,19 @@
                 <div class="row">
                     <p>Kwota transferu</p>
                     <mat-form-field>
-                        <input matInput placeholder="kwota kontraktu" class="inputText" id="NPtransferValue" type="number">
+                        <input matInput placeholder="kwota kontraktu" class="inputText" (change)="transferValueUpdated($event)" id="NPtransferValue" type="number">
                     </mat-form-field>
                 </div>
                 <div class="row">
                     <p>Pensja</p>
                     <mat-form-field>
-                        <input matInput placeholder="pensja" class="inputText" id="NPsalary" type="number">
+                        <input matInput placeholder="pensja" class="inputText" (change)="NPsalaryUpdated($event)" id="NPsalary" type="number">
                     </mat-form-field>
                 </div>
                 <div class="row">
                     <p>Długość kontraktu</p>
                     <mat-form-field>
-                        <input matInput placeholder="długość" class="inputText" id="NPcontractLength" type="text">
+                        <input matInput placeholder="długość" class="inputText" (change)="NPcontractUpdated($event)" id="NPcontractLength" type="text">
                     </mat-form-field>
                 </div>
                 <div class="row">
