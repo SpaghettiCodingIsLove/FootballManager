@@ -59,6 +59,56 @@ export class DatabaseService {
     })
   }
 
+  transferToClub(playerId, oldClub, transferCost, playerSalary, playerContract, playerValue, playerActuallSalary)
+  {
+      var szansa = Math.random();
+      if((szansa <= 90 && transferCost > playerValue) || (szansa <= 30 && transferCost < playerValue)){
+        szansa = Math.random();
+        if(playerSalary > playerActuallSalary && szansa <= 90)
+        {
+          this.transferFromClub(oldClub, transferCost, playerSalary);
+          this.buyPlayer(playerSalary, playerContract, playerId);
+          this.updateClubMoney(transferCost, playerSalary);
+        }
+        else{
+          alert("Zawodnik nie chce przejść do twojego klubu");
+        }
+      }
+      else{
+        alert("Klub nie chce sprzedać tego zawodnika");
+      }
+  }
+
+  updateClubMoney(transferCost, playerSalary){
+    return this.database.executeSql("UPDATE club set budget = budget - "+transferCost+", salaryBudget = salaryBudget - "+playerSalary+" where id = 2", []).then(res =>{
+      return res;
+    })
+  }
+
+  transferFromClub(clubName, transferCost, playerSalary)
+  {
+    return this.database.executeSql("UPDATE club set budget = budget + "+transferCost+", salaryBudget = salaryBudget + "+playerSalary+" where name = '"+clubName+"'", []).then(res =>{
+      return res;
+    })
+  }
+
+  getClubBudget(){
+    return this.database.executeSql("select budget, salaryBudget from club where id = 2", []).then(data =>{
+      let club = [];
+      if (data.rows.length > 0){
+        for (var i = 0; i < data.rows.length; i++) {
+          club.push({
+            Budget: data.rows.item(i).budget,
+            SalaryBudget: data.rows.item(i).salaryBudget
+          })
+        }
+      }
+      return club;
+    }, err => {
+      return [];
+    })
+  }
+
   selectPlayers(query){
     return this.database.executeSql(query, []).then(data =>{
       let players = [];

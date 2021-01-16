@@ -20,6 +20,16 @@ export class TransfersComponent implements OnInit {
   age = "";
   position = "";
   value = "";
+  maxValue = "";
+  selectedPlayerId = "";
+  selectedPlayerClub = "";
+  selectedPlayerSalary = "";
+  selectedPlayerValue = "";
+  transferValue = "";
+  salaryValue = "";
+  contractValue = "";
+  Sname = "";
+  Ssurname = "";
   constructor(public navCtrl: NavController, private databseProvider: DatabaseService) {
     this.databseProvider.getDatabaseState().subscribe(rdy =>{
       if(rdy){
@@ -62,8 +72,37 @@ export class TransfersComponent implements OnInit {
     })
   }
 
+  nameUpdated(ob){
+    this.Sname = ob.target.value;
+  }
+
+  surnameUpdated(ob){
+    this.Ssurname = ob.target.value;
+  }
+
+  maxValueUpdated(ob){
+    this.maxValue = ob.target.value;
+  }
+
+  NPsalaryUpdated(ob)
+  {
+    this.salaryValue = ob.target.value;
+  }
+
+  transferValueUpdated(ob){
+    this.transferValue = ob.target.value;
+  }
+
+  NPcontractUpdated(ob){
+    this.contractValue = ob.target.value;
+  }
+
   szukaj(){
     var command1 = "select p.id as id, p.club as clubId, p.name as name, surname, dateofbirth, n.name as nationality, position, c.name as club, value, salary, contract_terminates, p.overall as overall, offense, defence, potential, pass, gk, isJunior, isRetiring, currPosition from players p, country n, club c, league l where p.club = c.id and p.nationality = n.id and c.league = l.id and p.club != 2";
+            if (this.Sname != "")
+                command1 += " and p.name like '%"+this.Sname+"%'";
+            if (this.Ssurname != "")
+                command1 += " and surname like '%"+this.Ssurname+"%'";
             if (this.league != "")
                 command1 += " and l.name like '%"+this.league+"%'";
             if (this.club != "")
@@ -72,8 +111,8 @@ export class TransfersComponent implements OnInit {
                 command1 += " and n.name like '%"+this.country+"%'";
             if (this.position != "")
                 command1 += " and position like '%"+this.position+"%'";
-            if (document.getElementById("maxValue").innerHTML != "")
-                command1 += " and p.value <= "+document.getElementById("maxValue").innerHTML;
+            if (this.maxValue != "")
+                command1 += " and p.value <= "+this.maxValue;
 
     command1 += " order by p.overall desc";
     
@@ -90,6 +129,7 @@ export class TransfersComponent implements OnInit {
   }
 
   kup(){
+    this.buyNewPlayer(this.selectedPlayerId, this.selectedPlayerClub, this.transferValue, this.salaryValue, this.contractValue, this.selectedPlayerValue, this.selectedPlayerSalary);
   }
 
   loadSearchedPlayers(query)
@@ -100,6 +140,10 @@ export class TransfersComponent implements OnInit {
   }
 
   playerChanged(ob){
+    this.selectedPlayerId = ob.value.Id;
+    this.selectedPlayerClub = ob.value.Club;
+    this.selectedPlayerSalary = ob.value.Salary;
+    this.selectedPlayerValue = ob.value.Value;
     document.getElementById("overall").innerHTML = ob.value.Overall;
     document.getElementById("potential").innerHTML = ob.value.Potential;
     document.getElementById("defense").innerHTML = ob.value.Defence;
@@ -116,10 +160,8 @@ export class TransfersComponent implements OnInit {
     document.getElementById("salary").innerHTML = ob.value.Salary;
   }
 
-  buyNewPlayer(newSalary, contractLength, playerId){
-    this.databseProvider.buyPlayer(newSalary, contractLength, playerId).then(data =>{
-      data.loadPlayerData();
-    })
+  buyNewPlayer(playerId, oldClub, transferCost, playerSalary, playerContract, playerValue, playerActuallSalary){
+    this.databseProvider.transferToClub(playerId, oldClub, transferCost, playerSalary, playerContract, playerValue, playerActuallSalary);
   }
 
   ngOnInit() {}
