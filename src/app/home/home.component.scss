@@ -1,9 +1,9 @@
 ion-content {
-    --ion-background-color: #87CEFA;
+    --ion-background-color: #f5f5f5;
     border: 3px solid black;
 }
 
-.logo{
+.logo {
     width: 100%;
 }
 
@@ -18,17 +18,15 @@ ion-content {
         margin-left: 15%;
         margin-right: 15%;
     }
-
     button {
         margin-bottom: 1px;
     }
-
     .buttons {
         margin-top: 10%;
     }
 }
 
-@media only screen and (min-width: 500px)  {
+@media only screen and (min-width: 500px) {
     .but {
         font-size: 200%;
         display: block;
@@ -39,14 +37,13 @@ ion-content {
     }
 }
 
-@media only screen and (orientation: landscape){
+@media only screen and (orientation: landscape) {
     .logo {
         margin-top: 10px;
         margin-left: 25%;
         width: 50%;
         height: 50%;
     }
-
     .but {
         font-size: 150%;
         display: block;
@@ -66,7 +63,6 @@ ion-content {
         width: 50%;
         height: 50%;
     }
-
     .but {
         font-size: 200%;
         display: block;
