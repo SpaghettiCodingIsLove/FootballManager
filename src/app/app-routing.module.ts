@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './home/home.component';
+import { InitTeamComponent } from './init-team/init-team.component';
 import { JuniorsComponent } from './juniors/juniors.component';
 import { MenuComponent } from './menu/menu.component';
 import { SaveComponent } from './save/save.component';
@@ -41,6 +42,10 @@ const routes: Routes = [
   {
     path: 'transfers',
     component: TransfersComponent
+  },
+  {
+    path: 'initTeam',
+    component: InitTeamComponent
   }
 ];
 
