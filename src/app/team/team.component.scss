@@ -20,16 +20,24 @@ ion-content {
     font-size: 110%;
 }
 
+<<<<<<< Updated upstream
 
 .Players {
+=======
+.tableHader {
+>>>>>>> Stashed changes
     display: flex;
     justify-content: center;
     margin-bottom: 5%;
 }
 
-.Players p {
-    margin-right: 5%;
-    font-size: 110%;
+mat-select {
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    margin-bottom: 5%;
+    text-align: center;
+    border-bottom: 1px solid black;
 }
 
 .row {

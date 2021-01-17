@@ -4,80 +4,123 @@
             <div class="clubInfo">
                 <div class="row">
                     <p>Klub</p>
-                    <p>00</p>
+                    <p id="clubName">00</p>
                 </div>
                 <div class="row">
                     <p>Manager</p>
-                    <p>00</p>
+                    <p id="clubManager">00</p>
                 </div>
                 <div class="row">
+<<<<<<< Updated upstream
                     <p>Bud¿et</p>
                     <p>00</p>
                 </div>
                 <div class="row">
                     <p>Tygodniówki</p>
                     <p>00</p>
+=======
+                    <p>BudÅ¼et</p>
+                    <p id="clubBudget">00</p>
+                </div>
+                <div class="row">
+                    <p>TygodniÃ³wki</p>
+                    <p id="clubSalaryBudget">00</p>
+>>>>>>> Stashed changes
                 </div>
             </div>
         </div>
         <div class="block">
             <div class="playerInfo">
                 <div class="row">
-                    <p>Ocena</p>
-                    <p>00</p>
+                    <mat-select (selectionChange)="playerChanged($event)" disableRipple>
+                        <mat-option *ngFor="let player of players" [value]="player">
+                            {{ player.Surname }}
+                         </mat-option>
+                    </mat-select>
                 </div>
                 <div class="row">
+                    <p>Ocena</p>
+                    <p id="Overall">00</p>
+                </div>
+                <div class="row">
+<<<<<<< Updated upstream
                     <p>Potencja³</p>
                     <p>00</p>
+=======
+                    <p>PotencjaÅ‚</p>
+                    <p id="Potential">00</p>
+>>>>>>> Stashed changes
                 </div>
                 <div class="row">
                     <p>Defensywa</p>
-                    <p>00</p>
+                    <p id="Defense">00</p>
                 </div>
                 <div class="row">
                     <p>Ofensywa</p>
-                    <p>00</p>
+                    <p id="Offense">00</p>
                 </div>
                 <div class="row">
                     <p>Podania</p>
-                    <p>00</p>
+                    <p id="Passing">00</p>
                 </div>
                 <div class="row">
                     <p>Um. bramkarskie</p>
-                    <p>00</p>
+                    <p id="GK">00</p>
                 </div>
                 <div class="row">
                     <p>Imie</p>
-                    <p>00</p>
+                    <p id="Name">00</p>
                 </div>
                 <div class="row">
                     <p>Nazwisko</p>
-                    <p>00</p>
+                    <p id="Surname">00</p>
                 </div>
                 <div class="row">
                     <p>Klub</p>
-                    <p>00</p>
+                    <p id="Club">00</p>
                 </div>
                 <div class="row">
                     <p>Kraj</p>
-                    <p>00</p>
+                    <p id="Country">00</p>
                 </div>
                 <div class="row">
                     <p>Data urodzenia</p>
-                    <p>00</p>
+                    <p id="Birthday">00</p>
                 </div>
                 <div class="row">
+<<<<<<< Updated upstream
                     <p>D³ugoœæ kontraktu</p>
                     <p>00</p>
                 </div>
                 <div class="row">
                     <p>Wartoœæ</p>
                     <p>00</p>
+=======
+                    <p>DÅ‚ugoÅ›Ä‡ kontraktu</p>
+                    <p id="Contract">00</p>
+                </div>
+                <div class="row">
+                    <p>WartoÅ›Ä‡</p>
+                    <p id="Value">00</p>
+>>>>>>> Stashed changes
                 </div>
                 <div class="row">
                     <p>Pensja</p>
-                    <p>00</p>
+                    <p id="Salary">00</p>
                 </div>
+                <div class="row">
+                    <p>Pensja</p>
+                    <mat-form-field>
+                        <input matInput placeholder="pensja" class="inputText" (change)="NPsalaryUpdated($event)" id="NPsalary" type="number">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <p>DÅ‚ugoÅ›Ä‡ kontraktu</p>
+                    <mat-form-field>
+                        <input matInput placeholder="dÅ‚ugoÅ›Ä‡" class="inputText" (change)="NPcontractUpdated($event)" id="NPcontractLength" type="text">
+                    </mat-form-field>
+                </div>
+<<<<<<< Updated upstream
             </div>
         </div>
         <div class="block">
@@ -87,13 +130,21 @@
                 <p>Pozycja</p>
                 <p>Ocena</p>
                 <p>Sk³ad</p>
+=======
+>>>>>>> Stashed changes
             </div>
         </div>
         <div class="block">
             <div class="buttons">
+<<<<<<< Updated upstream
                 <button mat-raised-button color="primary">Negocjuj</button>
                 <button mat-raised-button color="primary">Wyczyœæ</button>
                 <button mat-raised-button color="primary">Zamieñ</button>
+=======
+                <button mat-raised-button color="primary" (click)="ExtendContract()">Negocjuj</button>
+                <button mat-raised-button color="primary">WyczyÅ›Ä‡</button>
+                <button mat-raised-button color="primary">ZamieÅ„</button>
+>>>>>>> Stashed changes
             </div>
         </div>
     </div>
