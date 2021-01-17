@@ -36,6 +36,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
+import { File} from '@ionic-native/file/ngx'
+
 @NgModule({
   declarations: [AppComponent, MenuComponent, HomeComponent, JuniorsComponent, SaveComponent, ScheduleComponent, TablesComponent, TeamComponent, TransfersComponent],
   entryComponents: [],
@@ -45,7 +47,8 @@ import { SQLite } from '@ionic-native/sqlite/ngx';
     SplashScreen,
     SQLitePorter,
     SQLite,
-    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    File
   ],
   bootstrap: [AppComponent]
 })

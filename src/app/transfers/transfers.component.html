@@ -1,148 +1,152 @@
 <ion-content>
     <div>
         <div class="block">
-            <div class="options">
+            <div id="opcjeSzukania" class="options">
                 <div class="row">
-                    <p>Imiê</p>
+                    <p>ImiÄ™</p>
                     <mat-form-field>
-                        <input matInput placeholder="imie" class="inputText" id="name" type="text">
+                        <input matInput placeholder="imie" class="inputText" id="name" type="text" (change)="nameUpdated($event)">
                     </mat-form-field>
                 </div>
                 <div class="row">
                     <p>Nazwisko</p>
                     <mat-form-field>
-                        <input matInput placeholder="nazwisko" class="inputText" id="surname" type="text">
+                        <input matInput placeholder="nazwisko" class="inputText" id="surname" type="text" (change)="surnameUpdated($event)">
                     </mat-form-field>
                 </div>
                 <div class="row">
                     <p>Pozycja</p>
-                    <mat-select disableRipple>
-
+                    <mat-select (selectionChange)="positionChanged($event)" disableRipple>
+                        <mat-option value="Striker">Striker</mat-option>
+                        <mat-option value="Midfielder">Midfielder</mat-option>
+                        <mat-option value="Defender">Defender</mat-option>
+                        <mat-option value="Goalkeeper">Goalkeeper</mat-option>
                     </mat-select>
                 </div>
                 <div class="row">
                     <p>Liga</p>
-                    <mat-select disableRipple>
-
+                    <mat-select (selectionChange)="leagueChanged($event)" disableRipple>
+                        <mat-option value="Bundesliga">Bundesliga</mat-option>
+                        <mat-option value="Premier League">Premier League</mat-option>
                     </mat-select>
                 </div>
                 <div class="row">
                     <p>Klub</p>
-                    <mat-select disableRipple>
-
+                    <mat-select (selectionChange)="clubChanged($event)" disableRipple>
+                        <mat-option *ngFor="let club of clubs" [value]="club.Name">
+                            {{ club.Name }}
+                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="row">
                     <p>Kraj</p>
-                    <mat-select disableRipple>
-
+                    <mat-select (selectionChange)="countryChanged($event)" disableRipple>
+                        <mat-option *ngFor="let country of countries" [value]="country.Name">
+                            {{ country.Name }}
+                         </mat-option>
                     </mat-select>
                 </div>
                 <div class="row">
-                    <p>Wartoœæ max</p>
+                    <p>WartoÅ›Ä‡</p>
                     <mat-form-field>
-                        <input matInput placeholder="wartoœæ max" class="inputText" id="maxValue" type="number">
+                        <input matInput placeholder="wartoÅ›Ä‡ max" class="inputText" id="maxValue" type="number" (change)="maxValueUpdated($event)">
                     </mat-form-field>
                 </div>
                 <div class="row">
-                    <p>Wiek max</p>
-                    <mat-select disableRipple>
-
-                    </mat-select>
+                    <button mat-raised-button (click)="szukaj()" color="primary">SZUKAJ</button>
                 </div>
             </div>
         </div>
-        <div class="block">
-            <div class="information">
-                <p>Imie</p>
-                <p>Nazwisko</p>
-                <p>Pozycja</p>
-                <p>Ocena</p>
-            </div>
-        </div>
-        <div class="block">
+        <div id="Zawodnicy" class="block" style="margin-bottom: 60px;">
             <div class="showPlayers">
                 <div class="row">
-                    <p>Ocena ogólna</p>
-                    <p>00</p>
+                    <button mat-raised-button (click)="zamknij()" color="primary">ZAMKNIJ</button>
                 </div>
                 <div class="row">
-                    <p>Potencja³</p>
-                    <p>00</p>
+                    <p>Zawodnicy</p>
+                    <mat-select (selectionChange)="playerChanged($event)" disableRipple>
+                        <mat-option *ngFor="let player of players" [value]="player">
+                            {{ player.Surname }}
+                         </mat-option>
+                    </mat-select>
+                </div>
+                <div class="row">
+                    <p>Ocena ogÃ³lna</p>
+                    <p id="overall">00</p>
+                </div>
+                <div class="row">
+                    <p>PotencjaÅ‚</p>
+                    <p id="potential">00</p>
                 </div>
                 <div class="row">
                     <p>Defensywa</p>
-                    <p>00</p>
+                    <p id="defense">00</p>
                 </div>
                 <div class="row">
                     <p>Ofensywa</p>
-                    <p>00</p>
+                    <p id="offense">00</p>
                 </div>
                 <div class="row">
                     <p>Podania</p>
-                    <p>00</p>
+                    <p id="passing">00</p>
                 </div>
                 <div class="row">
                     <p>Um. bramkarskie</p>
-                    <p>00</p>
+                    <p id="goalkeeper">00</p>
                 </div>
                 <div class="row">
-                    <p>Imiê</p>
-                    <p>00</p>
+                    <p>ImiÄ™</p>
+                    <p id="Pname">00</p>
                 </div>
                 <div class="row">
                     <p>Nazwisko</p>
-                    <p>00</p>
+                    <p id="Psurname">00</p>
                 </div>
                 <div class="row">
                     <p>Klub</p>
-                    <p>00</p>
+                    <p id="Pclub">00</p>
                 </div>
                 <div class="row">
                     <p>Kraj</p>
-                    <p>00</p>
+                    <p id="nationality">00</p>
                 </div>
                 <div class="row">
                     <p>Data urodzenia</p>
-                    <p>00</p>
+                    <p id="birthday">00</p>
                 </div>
                 <div class="row">
-                    <p>D³ugoœæ kontraktu</p>
-                    <p>00</p>
+                    <p>DÅ‚ugoÅ›Ä‡ kontraktu</p>
+                    <p id="contract">00</p>
                 </div>
                 <div class="row">
-                    <p>Wartoœæ</p>
-                    <p>00</p>
+                    <p>WartoÅ›Ä‡</p>
+                    <p id="value">00</p>
                 </div>
                 <div class="row">
                     <p>Pensja</p>
-                    <p>00</p>
+                    <p id="salary">00</p>
                 </div>
                 <div class="row">
                     <p>Kwota transferu</p>
                     <mat-form-field>
-                        <input matInput placeholder="kwota kontraktu" class="inputText" id="transferValue" type="number">
+                        <input matInput placeholder="kwota kontraktu" class="inputText" (change)="transferValueUpdated($event)" id="NPtransferValue" type="number">
                     </mat-form-field>
                 </div>
                 <div class="row">
                     <p>Pensja</p>
                     <mat-form-field>
-                        <input matInput placeholder="pensja" class="inputText" id="salary" type="number">
+                        <input matInput placeholder="pensja" class="inputText" (change)="NPsalaryUpdated($event)" id="NPsalary" type="number">
                     </mat-form-field>
                 </div>
                 <div class="row">
-                    <p>D³ugoœæ kontraktu</p>
+                    <p>DÅ‚ugoÅ›Ä‡ kontraktu</p>
                     <mat-form-field>
-                        <input matInput placeholder="d³ugoœæ" class="inputText" id="contractLength" type="number">
+                        <input matInput placeholder="dÅ‚ugoÅ›Ä‡" class="inputText" (change)="NPcontractUpdated($event)" id="NPcontractLength" type="text">
                     </mat-form-field>
                 </div>
-            </div>
-        </div>
-        <div class="block">
-            <div class="buttons">
-                <button mat-raised-button (click)="clear()" color="primary">Wyczyœæ</button>
-                <button mat-raised-button (click)="buyPlayer()" color="primary">Kup</button>
-                <button mat-raised-button (click)="search()" color="primary">Wyszukaj</button>
+                <div class="row">
+                    <button mat-raised-button (click)="kup()" color="primary">KUP</button>
+                </div>
             </div>
         </div>
     </div>

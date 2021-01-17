@@ -1,6 +1,5 @@
 ion-content {
-    --ion-background-color: #87CEFA;
-    border: 3px solid black;
+    --ion-background-color: #f5f5f5;
 }
 
 .block {
@@ -20,12 +19,7 @@ ion-content {
     font-size: 110%;
 }
 
-<<<<<<< Updated upstream
-
-.Players {
-=======
 .tableHader {
->>>>>>> Stashed changes
     display: flex;
     justify-content: center;
     margin-bottom: 5%;
@@ -66,7 +60,6 @@ mat-select {
         margin-left: 20%;
         margin-right: 20%;
     }
-
     .buttons {
         display: flex;
         justify-content: space-between;

@@ -11,4 +11,7 @@ export class MenuComponent implements OnInit {
 
   ngOnInit() {}
 
+  exit() {
+    navigator['app'].exitApp();
+ }
 }

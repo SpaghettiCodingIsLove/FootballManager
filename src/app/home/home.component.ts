@@ -11,4 +11,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {}
 
+  exit() {
+    navigator['app'].exitApp();
+ }
 }
