@@ -4,79 +4,101 @@
             <div class="clubInfo">
                 <div class="row">
                     <p>Klub</p>
-                    <p>00</p>
+                    <p id="clubName">00</p>
                 </div>
                 <div class="row">
                     <p>Manager</p>
-                    <p>00</p>
+                    <p id="clubManager">00</p>
                 </div>
                 <div class="row">
                     <p>Budżet</p>
-                    <p>00</p>
+                    <p id="clubBudget">00</p>
                 </div>
                 <div class="row">
                     <p>Tygodniówki</p>
-                    <p>00</p>
+                    <p id="clubSalaryBudget">00</p>
                 </div>
             </div>
         </div>
         <div class="block">
             <div class="playerInfo">
                 <div class="row">
+                    <mat-select (selectionChange)="playerChanged($event)" disableRipple>
+                        <mat-option *ngFor="let player of players" [value]="player">
+                            {{ player.Surname }}
+                         </mat-option>
+                    </mat-select>
+                </div>
+                <div class="row">
                     <p>Ocena</p>
-                    <p>00</p>
+                    <p id="Overall">00</p>
                 </div>
                 <div class="row">
                     <p>Potencjał</p>
-                    <p>00</p>
+                    <p id="Potential">00</p>
                 </div>
                 <div class="row">
                     <p>Defensywa</p>
-                    <p>00</p>
+                    <p id="Defense">00</p>
                 </div>
                 <div class="row">
                     <p>Ofensywa</p>
-                    <p>00</p>
+                    <p id="Offense">00</p>
                 </div>
                 <div class="row">
                     <p>Podania</p>
-                    <p>00</p>
+                    <p id="Passing">00</p>
                 </div>
                 <div class="row">
                     <p>Um. bramkarskie</p>
-                    <p>00</p>
+                    <p id="GK">00</p>
                 </div>
                 <div class="row">
                     <p>Imie</p>
-                    <p>00</p>
+                    <p id="Name">00</p>
                 </div>
                 <div class="row">
                     <p>Nazwisko</p>
-                    <p>00</p>
+                    <p id="Surname">00</p>
                 </div>
                 <div class="row">
                     <p>Klub</p>
-                    <p>00</p>
+                    <p id="Club">00</p>
                 </div>
                 <div class="row">
                     <p>Kraj</p>
-                    <p>00</p>
+                    <p id="Country">00</p>
                 </div>
                 <div class="row">
                     <p>Data urodzenia</p>
+                    <p id="Birthday">00</p>
+                </div>
+                <div class="row">
                     <p>00</p>
                 </div>
                 <div class="row">
                     <p>Długość kontraktu</p>
-                    <p>00</p>
+                    <p id="Contract">00</p>
                 </div>
                 <div class="row">
                     <p>Wartość</p>
-                    <p>00</p>
+                    <p id="Value">00</p>
                 </div>
                 <div class="row">
                     <p>Pensja</p>
-                    <p>00</p>
+                    <p id="Salary">00</p>
+                </div>
+                <div class="row">
+                    <p>Pensja</p>
+                    <mat-form-field>
+                        <input matInput placeholder="pensja" class="inputText" (change)="NPsalaryUpdated($event)" id="NPsalary" type="number">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <p>Długość kontraktu</p>
+                    <mat-form-field>
+                        <input matInput placeholder="długość" class="inputText" (change)="NPcontractUpdated($event)" id="NPcontractLength" type="text">
+                    </mat-form-field>
                 </div>
             </div>
         </div>
@@ -91,7 +113,7 @@
         </div>
         <div class="block">
             <div class="buttons">
-                <button mat-raised-button color="primary">Negocjuj</button>
+                <button mat-raised-button color="primary" (click)="ExtendContract()">Negocjuj</button>
                 <button mat-raised-button color="primary">Wyczyść</button>
                 <button mat-raised-button color="primary">Zamień</button>
             </div>

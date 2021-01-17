@@ -59,6 +59,45 @@ export class DatabaseService {
     })
   }
 
+  PlayerNewContract(newSalary, contract, playerSalary, playerId){
+    this.updateClubSalaryBudget(newSalary, playerSalary, playerId);
+    this.updatePlayerSalary(newSalary, contract, playerId);
+  }
+
+  updateClubSalaryBudget(newSalary, playerSalary, playerId){
+    return this.database.executeSql("update club set salaryBudget = salaryBudget -"+(newSalary - playerSalary)+"where id = (select p.club from players p where p.id = "+playerId+")", []).then(res =>{
+      return res;
+    })
+  }
+
+  updatePlayerSalary(newSalary, contract, playerId)
+  {
+    return this.database.executeSql("update players set salary ="+newSalary+", contract_terminates = '"+contract+"' where id = "+playerId, []).then(res =>{
+      return res;
+    })
+  }
+
+  getYourClub(){
+    return this.database.executeSql("select id, name, budget, salaryBudget, coach from club where id = 2", []).then(data =>{
+      let club = [];
+      if (data.rows.length > 0){
+        for (var i = 0; i < data.rows.length; i++) {
+          club.push({
+            Id: data.rows.item(i).id,
+            Name: data.rows.item(i).name,
+            Budget: data.rows.item(i).budget,
+            SalaryBudget: data.rows.item(i).salaryBudget,
+            Coach: data.rows.item(i).coach
+          })
+        }
+      }
+      return club;
+    }, err => {
+      return [];
+    })
+  }
+
+
   transferToClub(playerId, oldClub, transferCost, playerSalary, playerContract, playerValue, playerActuallSalary)
   {
       var szansa = Math.random();
@@ -108,6 +147,39 @@ export class DatabaseService {
       return [];
     })
   }
+
+  getYourPlayers(){
+    return this.database.executeSql("select p.id as id, p.club as clubId, p.name as name, surname, dateofbirth, n.name as nationality, position, c.name as club, value, salary, contract_terminates, p.overall as overall, offense, defence, potential, pass, gk, isJunior, isRetiring, currPosition from players p, country n, club c, league l where p.club = c.id and p.nationality = n.id and c.league = l.id and p.club = 2", []).then(data =>{
+      let players = [];
+      if (data.rows.length > 0){
+        for (var i = 0; i < data.rows.length; i++) {
+          players.push({
+            Id: data.rows.item(i).id,
+            Name: data.rows.item(i).name,
+            Surname: data.rows.item(i).surname,
+            DateofBirth: data.rows.item(i).dateofbirth,
+            Position: data.rows.item(i).position,
+            Club: data.rows.item(i).club,
+            ClubId: data.rows.item(i).clubId,
+            Nationality: data.rows.item(i).nationality,
+            Value: data.rows.item(i).value,
+            Salary: data.rows.item(i).salary,
+            Contract: data.rows.item(i).contract_terminates,
+            Overall: data.rows.item(i).overall,
+            Offense: data.rows.item(i).offense,
+            Defence: data.rows.item(i).defence,
+            Potential: data.rows.item(i).potential,
+            Pass: data.rows.item(i).pass,
+            Gk: data.rows.item(i).gk
+          })
+        }
+      }
+      return players;
+    }, err => {
+      return [];
+    })
+  }
+
 
   selectPlayers(query){
     return this.database.executeSql(query, []).then(data =>{
