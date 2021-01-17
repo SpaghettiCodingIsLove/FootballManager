@@ -5,21 +5,14 @@
         z-index: 1;
         display: inline-block;
         padding: 0;
-        background-color: #00008B;
+        background-color: #673ab7;
         font-size: 80%;
         color: white;
         text-align: center;
+        width: 100%;
     }
-
-    .navbar a {
+    .navbar button {
         display: inline-block;
-        font-size: 125%;
-        padding: 0;
-    }
-
-    .navbar a:hover {
-        background: #f1f1f1;
-        color: black;
     }
 }
 
@@ -31,7 +24,7 @@
         z-index: 1;
         display: inline-block;
         padding: 0;
-        background-color: #00008B;
+        background-color: #673ab7;
         font-size: 100%;
         color: white;
         text-align: center;
