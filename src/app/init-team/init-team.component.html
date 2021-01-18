@@ -1,3 +1,20 @@
 <ion-content>
-
+    <div class="league">
+        <p>Liga</p>
+        <mat-select (selectionChange)="leagueChanged($event)" disableRipple>
+            <mat-option value="Bundesliga">Bundesliga</mat-option>
+            <mat-option value="Premier League">Premier League</mat-option>
+        </mat-select>
+    </div>
+    <div class="club">
+        <p>Klub</p>
+        <mat-select (selectionChange)="clubChanged($event)" disableRipple>
+            <mat-option *ngFor="let club of clubs" [value]="club">
+                {{ club.Name }}
+            </mat-option>
+        </mat-select>
+    </div>
+    <div class="button">
+        <button mat-raised-button color="primary" (click)="save()">Zatwierdź</button>
+    </div>
 </ion-content>

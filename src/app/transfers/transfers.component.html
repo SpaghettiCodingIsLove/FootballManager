@@ -35,7 +35,7 @@
                     <mat-select (selectionChange)="clubChanged($event)" disableRipple>
                         <mat-option *ngFor="let club of clubs" [value]="club.Name">
                             {{ club.Name }}
-                         </mat-option>
+                        </mat-option>
                     </mat-select>
                 </div>
                 <div class="row">
@@ -43,7 +43,7 @@
                     <mat-select (selectionChange)="countryChanged($event)" disableRipple>
                         <mat-option *ngFor="let country of countries" [value]="country.Name">
                             {{ country.Name }}
-                         </mat-option>
+                        </mat-option>
                     </mat-select>
                 </div>
                 <div class="row">
@@ -67,7 +67,7 @@
                     <mat-select (selectionChange)="playerChanged($event)" disableRipple>
                         <mat-option *ngFor="let player of players" [value]="player">
                             {{ player.Surname }}
-                         </mat-option>
+                        </mat-option>
                     </mat-select>
                 </div>
                 <div class="row">
@@ -150,4 +150,13 @@
             </div>
         </div>
     </div>
+    <nav>
+        <div class="navbar">
+            <button mat-raised-button routerLink="/menu" color="primary">Menu</button>
+            <button mat-raised-button routerLink="/tables" color="primary">Tabele</button>
+            <button mat-raised-button routerLink="/schedule" color="primary">Terminarz</button>
+            <button mat-raised-button routerLink="/team" color="primary">Drużyna</button>
+            <button mat-raised-button routerLink="/transfers" color="primary">Transfery</button>
+        </div>
+    </nav>
 </ion-content>

@@ -84,3 +84,34 @@ select {
         margin-right: auto;
     }
 }
+
+@media only screen and (max-width: 500px) {
+    .navbar {
+        position: fixed;
+        bottom: 0%;
+        z-index: 1;
+        padding: 0;
+        background-color: #673ab7;
+        font-size: 80%;
+        color: white;
+        text-align: center;
+        width: 100%;
+    }
+    .navbar button {
+        display: inline-block;
+    }
+}
+
+@media only screen and (min-width: 500px) {
+    .navbar {
+        width: 100%;
+        position: fixed;
+        bottom: 0%;
+        z-index: 1;
+        padding: 0;
+        background-color: #673ab7;
+        font-size: 100%;
+        color: white;
+        text-align: center;
+    }
+}
