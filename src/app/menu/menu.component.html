@@ -1,5 +1,5 @@
 <ion-content>
-    <div class="buttons">
+    <div class="buttons" style="min-height: 100%;">
         <button mat-raised-button (click)="nextGame()" color="accent" class="but" *ngIf="next" [disabled]="! nextEnabled">Następna gra</button>
         <button mat-raised-button (click)="nextSeason()" color="accent" class="but" *ngIf="end" [disabled]="! nextEnabled">Następny sezon</button>
         <button mat-raised-button routerLink="/team" color="primary" class="but">Drużyna</button>

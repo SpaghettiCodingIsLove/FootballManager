@@ -1,3 +1,57 @@
 ion-content {
     --ion-background-color: #f5f5f5;
 }
+
+.league {
+    margin-top: 20%;
+    font-size: 120%;
+    text-align: center;
+}
+
+.league mat-select {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.club {
+    font-size: 120%;
+    text-align: center;
+}
+
+.club mat-select {
+    width: 70%;
+    margin-left: 15%;
+    margin-right: 15%;
+    border-bottom: 1px solid black;
+    margin-bottom: 20px;
+}
+
+button {
+    width: 50%;
+    margin-top: 10%;
+    margin-left: 25%;
+    margin-right: 25%;
+}
+
+@media (orientation: landscape) {
+    .league {
+        margin-top: 5%;
+    }
+    .league mat-select {
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    .club mat-select {
+        width: 60%;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
+    button {
+        margin-top: 5%;
+    }
+}

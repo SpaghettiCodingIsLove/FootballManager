@@ -121,7 +121,58 @@ export class MenuComponent implements OnInit {
     }
   }
 
-  nextSeason(){
+  async nextSeason(){
+    this.nextEnabled = false;
+    this.databseProvider.extendContracts();
+    this.databseProvider.resetSchedule();
+    this.databseProvider.resteTables();
 
+    MenuComponent.Round = (MenuComponent.LeagueId == 2 ? 5 : 1);
+    MenuComponent.SeasonEnd.setFullYear(MenuComponent.SeasonEnd.getFullYear() + 1);
+    MenuComponent.SeasonStart.setFullYear(MenuComponent.SeasonStart.getFullYear() + 1);
+    MenuComponent.CurrentDate = (MenuComponent.LeagueId == 2 ? new Date(MenuComponent.SeasonStart.getFullYear(), 8 , 19) : new Date(MenuComponent.SeasonStart.getFullYear(), 7 ,19));
+    let toSave = `${MenuComponent.LeagueId};
+      ${MenuComponent.ClubId};
+      ${MenuComponent.LeagueName};
+      ${MenuComponent.ClubName};
+      ${MenuComponent.CurrentDate};
+      ${MenuComponent.SeasonStart};
+      ${MenuComponent.SeasonEnd};
+      ${MenuComponent.Round}`;
+      await this.file.writeFile(this.file.dataDirectory, 'player.txt', toSave, {replace: true})
+
+      for(var i = 1; i < 5; i++){
+        let matches = await this.databseProvider.getRound(i);
+        matches.forEach(async game => {
+          let visitorLuck = (Math.floor(Math.random() * (15 - 8)) + 8) / 10;
+          let hostLuck = (Math.floor(Math.random() * (15 - 8)) + 8) / 10;
+
+          let hostSt = await this.databseProvider.getSquadSt(game.Host);
+          let visitorSt =  await this.databseProvider.getSquadSt(game.Visitor);
+          let hostMid = await this.databseProvider.getSquadMid(game.Host);
+          let visitorMid =  await this.databseProvider.getSquadMid(game.Visitor);
+          let hostDef = await this.databseProvider.getSquadDef(game.Host);
+          let visitorDef =  await this.databseProvider.getSquadDef(game.Visitor);
+          let hostGk = await this.databseProvider.getSquadGk(game.Host);
+          let visitorGk =  await this.databseProvider.getSquadGk(game.Visitor);
+
+          let hostChances = Math.floor((hostMid * 2 - visitorDef) * 1.1 * hostLuck / 11);
+          let visitorChances = Math.floor((visitorMid * 2 - hostDef) * visitorLuck / 11);
+
+          let hostGoalChance = (hostSt * 2 - visitorGk) * 1.1 * hostLuck / 300;
+          let visitorGoalChance = (visitorSt * 2 - hostGk) * visitorLuck / 300;
+
+          let hostGoals = Math.round((hostChances < 0 ? 0 : hostChances) * (hostGoalChance < 0.20 ? 0 : hostGoalChance));
+          let visitorGoals = Math.round((visitorChances < 0 ? 0 : visitorChances) * (visitorGoalChance < 0.20 ? 0 : visitorGoalChance));
+
+          await this.databseProvider.updateGame(game.Id, hostGoals, visitorGoals);
+          await this.databseProvider.updateTable(game.Host, hostGoals, visitorGoals);
+          await this.databseProvider.updateTable(game.Visitor, visitorGoals, hostGoals);
+        });
+    }
+
+      this.next = true;
+      this.end = false;
+      this.nextEnabled = true;
   }
 }

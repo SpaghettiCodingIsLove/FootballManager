@@ -5,6 +5,7 @@ import { BehaviorSubject } from 'rxjs';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { Platform } from '@ionic/angular';
 import { Storage } from '@ionic/storage'
+import { MenuComponent } from '../menu/menu.component';
 
 
 @Injectable({
@@ -480,5 +481,26 @@ export class DatabaseService {
     .then(res =>{
       return res;
     })
+  }
+
+  extendContracts(){
+    return this.database.executeSql("update players set contract_terminates = \"" + (MenuComponent.SeasonEnd.getFullYear() + 1) + "-" + MenuComponent.SeasonEnd.getMonth() + "-" + MenuComponent.SeasonEnd.getDate + "\" where contract_terminates = \"" + MenuComponent.SeasonEnd.getFullYear() + "-" + MenuComponent.SeasonEnd.getMonth() + "-" + MenuComponent.SeasonEnd.getDate() + "\"", [])
+    .then(res =>{
+      return res;
+    });
+  }
+
+  resetSchedule() {
+    return this.database.executeSql("update schedule set host_goals = null, Visitor_goals = null", [])
+    .then(res =>{
+      return res;
+    });
+  }
+
+  resteTables() {
+    return this.database.executeSql("UPDATE club set points = 0, played = 0, scored_goals = 0, lost_goals = 0, wins = 0, loses = 0, draws = 0, budget = budget + 50000000, salaryBudget = salaryBudget + 70000", [])
+    .then(res =>{
+      return res;
+    });
   }
 }
