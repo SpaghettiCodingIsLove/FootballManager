@@ -37,9 +37,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { SQLitePorter } from '@ionic-native/sqlite-porter/ngx';
 import { SQLite } from '@ionic-native/sqlite/ngx';
 import { File} from '@ionic-native/file/ngx'
+import { InitTeamComponent } from './init-team/init-team.component';
 
 @NgModule({
-  declarations: [AppComponent, MenuComponent, HomeComponent, JuniorsComponent, SaveComponent, ScheduleComponent, TablesComponent, TeamComponent, TransfersComponent],
+  declarations: [AppComponent, MenuComponent, HomeComponent, JuniorsComponent, SaveComponent, ScheduleComponent, TablesComponent, TeamComponent, TransfersComponent, InitTeamComponent],
   entryComponents: [],
     imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, MatDialogModule, BrowserAnimationsModule, MatButtonModule, MatInputModule, MatFormFieldModule, MatTableModule,MatSelectModule, MatSliderModule, IonicStorageModule.forRoot(), HttpClientModule, MatListModule],
   providers: [

@@ -34,6 +34,36 @@ export class DatabaseService {
     )
   }
 
+  clearPlayers() {
+    return this.database.executeSql("delete from players", []).then(res => {
+      return res;
+    });
+  }
+
+  clearSchedule() {
+    return this.database.executeSql("delete from schedule", []).then(res => {
+      return res;
+    });
+  }
+
+  clearClub() {
+    return this.database.executeSql("delete from club", []).then(res => {
+      return res;
+    });
+  }
+
+  clearLeague() {
+    return this.database.executeSql("delete from league", []).then(res => {
+      return res;
+    });
+  }
+
+  clearCountry() {
+    return this.database.executeSql("delete from country", []).then(res => {
+      return res;
+    });
+  }
+
   fillDatabase() {
     this.http.get(
       'assets/dump.sql', 
@@ -348,5 +378,107 @@ export class DatabaseService {
 
   getDatabaseState() {
     return this.databaseReady.asObservable();
+  }
+
+  getPremierLeagueClubs() {
+    return this.database.executeSql("select id, name from club where league = 1", []).then(data => {
+      let players = [];
+      if (data.rows.length > 0){
+        for (var i = 0; i < data.rows.length; i++) {
+          players.push({
+            Name: data.rows.item(i).name,
+            Id: data.rows.item(i).id
+          })
+        }
+      }
+      return players;
+    }, err => {
+      return [];
+    })
+  }
+
+  getBundesligaClubs() {
+    return this.database.executeSql("select id, name from club where league = 2", []).then(data => {
+      let players = [];
+      if (data.rows.length > 0){
+        for (var i = 0; i < data.rows.length; i++) {
+          players.push({
+            Name: data.rows.item(i).name,
+            Id: data.rows.item(i).id
+          })
+        }
+      }
+      return players;
+    }, err => {
+      return [];
+    })
+  }
+
+  getRound(round) {
+    return this.database.executeSql("select id, host, visitor from schedule where matchday = " + round , []).then(data => {
+      let players = [];
+      if (data.rows.length > 0){
+        for (var i = 0; i < data.rows.length; i++) {
+          players.push({
+            Id: data.rows.item(i).id,
+            Host: data.rows.item(i).host,
+            Visitor: data.rows.item(i).visitor
+          })
+        }
+      }
+      return players;
+    }, err => {
+      return [];
+    })
+  }
+
+  getSquadDef(id){
+    return this.database.executeSql("select avg(defence) as defence from (select defence from players where club = " + id + " and position = \"Defender\" order by defence desc limit 4)", []).then(data => {
+      let defence = data.rows.item(0).defence;
+      return defence;
+    }, err => {
+      return 0;
+    })
+  }
+
+  getSquadSt(id){
+    return this.database.executeSql("select avg(offense) as offense from (select offense from players where club = "+ id +" and position = \"Striker\" order by offense desc limit 3)", []).then(data => {
+      let st = data.rows.item(0).offense;
+      return st;
+    }, err => {
+      return 0;
+    })
+  }
+
+  getSquadMid(id){
+    return this.database.executeSql("select avg(pass) as pass from (select pass from players where club = " + id + " and position = \"Midfielder\" order by pass desc limit 3)", []).then(data => {
+      let mid = data.rows.item(0).pass;
+      return mid;
+    }, err => {
+      return 0;
+    })
+  }
+
+  getSquadGk(id){
+    return this.database.executeSql("select gk from players where club = " + id + " and position = \"Goalkeeper\" order by gk desc limit 1", []).then(data => {
+      let gk = data.rows.item(0).gk;
+      return gk;
+    }, err => {
+      return 0;
+    })
+  }
+
+  updateGame(id, hostGoals, visitorGoals){
+    return this.database.executeSql("update schedule set host_goals = " +hostGoals+", visitor_goals = "+visitorGoals+" where id = "+id, [])
+    .then(res =>{
+      return res;
+    })
+  }
+
+  updateTable(id: Number, teamGoals: Number, oponentGoals: Number){
+    return this.database.executeSql("UPDATE club set points = points + " + (teamGoals == oponentGoals ? "1" : teamGoals > oponentGoals ? "3" : "0") + ", played = played + 1, scored_goals = scored_goals +" + teamGoals +", lost_goals = lost_goals + " + oponentGoals + ", wins = wins + " + (oponentGoals < teamGoals ? 1 : 0) + ", loses = loses + " + (oponentGoals > teamGoals ? 1 : 0) + ", draws = draws + " + (oponentGoals == teamGoals ? 1 : 0) + " where id = " + id, [])
+    .then(res =>{
+      return res;
+    })
   }
 }

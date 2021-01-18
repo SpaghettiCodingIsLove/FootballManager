@@ -1,11 +1,21 @@
 <ion-content>
     <div class="buttons">
-        <button mat-raised-button (click)="nextGame()" color="accent" class="but">Następna gra</button>
-        <button mat-raised-button (click)="nextSeason()" color="accent" class="but">Następny sezon</button>
+        <button mat-raised-button (click)="nextGame()" color="accent" class="but" *ngIf="next" [disabled]="! nextEnabled">Następna gra</button>
+        <button mat-raised-button (click)="nextSeason()" color="accent" class="but" *ngIf="end" [disabled]="! nextEnabled">Następny sezon</button>
         <button mat-raised-button routerLink="/team" color="primary" class="but">Drużyna</button>
         <button mat-raised-button routerLink="/transfers" color="primary" class="but">Transfery</button>
         <button mat-raised-button routerLink="/schedule" color="primary" class="but">Terminarz</button>
         <button mat-raised-button routerLink="/tables" color="primary" class="but">Tabele</button>
         <button mat-raised-button (click)="exit()" color="warn" class="but">Zamknij</button>
+        <button mat-raised-button (click)="reset()" color="warn" class="but">Reset</button>
     </div>
+    <nav>
+        <div class="navbar">
+            <button mat-raised-button routerLink="/menu" color="primary">Menu</button>
+            <button mat-raised-button routerLink="/tables" color="primary">Tabele</button>
+            <button mat-raised-button routerLink="/schedule" color="primary">Terminarz</button>
+            <button mat-raised-button routerLink="/team" color="primary">Drużyna</button>
+            <button mat-raised-button routerLink="/transfers" color="primary">Transfery</button>
+        </div>
+    </nav>
 </ion-content>
