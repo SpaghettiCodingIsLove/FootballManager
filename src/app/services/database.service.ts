@@ -85,7 +85,7 @@ export class DatabaseService {
   }
 
   buyPlayer(newSalary, contractLength, playerId){
-    return this.database.executeSql("UPDATE players set salary = "+newSalary+", contract_terminates = '"+contractLength+"', club = 2 where id = "+playerId, []).then(res =>{
+    return this.database.executeSql("UPDATE players set salary = "+newSalary+", contract_terminates = '"+contractLength+"', club = "+ MenuComponent.ClubId.toString() +" where id = "+playerId, []).then(res =>{
       return res;
     })
   }
@@ -109,7 +109,7 @@ export class DatabaseService {
   }
 
   getYourClub(){
-    return this.database.executeSql("select id, name, budget, salaryBudget, coach from club where id = 2", []).then(data =>{
+    return this.database.executeSql("select id, name, budget, salaryBudget, coach from club where id = "+MenuComponent.ClubId.toString(), []).then(data =>{
       let club = [];
       if (data.rows.length > 0){
         for (var i = 0; i < data.rows.length; i++) {
@@ -139,6 +139,7 @@ export class DatabaseService {
           this.transferFromClub(oldClub, transferCost, playerSalary);
           this.buyPlayer(playerSalary, playerContract, playerId);
           this.updateClubMoney(transferCost, playerSalary);
+          alert("Gratulacje, kupiłeś tego zawodnika");
         }
         else{
           alert("Zawodnik nie chce przejść do twojego klubu");
@@ -150,7 +151,7 @@ export class DatabaseService {
   }
 
   updateClubMoney(transferCost, playerSalary){
-    return this.database.executeSql("UPDATE club set budget = budget - "+transferCost+", salaryBudget = salaryBudget - "+playerSalary+" where id = 2", []).then(res =>{
+    return this.database.executeSql("UPDATE club set budget = budget - "+transferCost+", salaryBudget = salaryBudget - "+playerSalary+" where id = "+MenuComponent.ClubId.toString(), []).then(res =>{
       return res;
     })
   }
@@ -163,7 +164,7 @@ export class DatabaseService {
   }
 
   getClubBudget(){
-    return this.database.executeSql("select budget, salaryBudget from club where id = 2", []).then(data =>{
+    return this.database.executeSql("select budget, salaryBudget from club where id = "+MenuComponent.ClubId.toString(), []).then(data =>{
       let club = [];
       if (data.rows.length > 0){
         for (var i = 0; i < data.rows.length; i++) {
@@ -180,7 +181,7 @@ export class DatabaseService {
   }
 
   getYourPlayers(){
-    return this.database.executeSql("select p.id as id, p.club as clubId, p.name as name, surname, dateofbirth, n.name as nationality, position, c.name as club, value, salary, contract_terminates, p.overall as overall, offense, defence, potential, pass, gk, isJunior, isRetiring, currPosition from players p, country n, club c, league l where p.club = c.id and p.nationality = n.id and c.league = l.id and p.club = 2", []).then(data =>{
+    return this.database.executeSql("select p.id as id, p.club as clubId, p.name as name, surname, dateofbirth, n.name as nationality, position, c.name as club, value, salary, contract_terminates, p.overall as overall, offense, defence, potential, pass, gk, isJunior, isRetiring, currPosition from players p, country n, club c, league l where p.club = c.id and p.nationality = n.id and c.league = l.id and p.club = "+MenuComponent.ClubId.toString(), []).then(data =>{
       let players = [];
       if (data.rows.length > 0){
         for (var i = 0; i < data.rows.length; i++) {
@@ -287,7 +288,7 @@ export class DatabaseService {
   }
 
   getAllClubs(){
-    return this.database.executeSql("SELECT id, name from club where id != 2", []).then(
+    return this.database.executeSql("SELECT id, name from club where id != "+MenuComponent.ClubId.toString(), []).then(
       data => {
         let table = [];
         if(data.rows.length > 0)

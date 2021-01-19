@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { NavController } from '@ionic/angular';
+import { MenuComponent } from '../menu/menu.component';
 import { DatabaseService } from '../services/database.service';
 
 @Component({
@@ -98,7 +99,7 @@ export class TransfersComponent implements OnInit {
   }
 
   szukaj(){
-    var command1 = "select p.id as id, p.club as clubId, p.name as name, surname, dateofbirth, n.name as nationality, position, c.name as club, value, salary, contract_terminates, p.overall as overall, offense, defence, potential, pass, gk, isJunior, isRetiring, currPosition from players p, country n, club c, league l where p.club = c.id and p.nationality = n.id and c.league = l.id and p.club != 2";
+    var command1 = "select p.id as id, p.club as clubId, p.name as name, surname, dateofbirth, n.name as nationality, position, c.name as club, value, salary, contract_terminates, p.overall as overall, offense, defence, potential, pass, gk, isJunior, isRetiring, currPosition from players p, country n, club c, league l where p.club = c.id and p.nationality = n.id and c.league = l.id and p.club != "+MenuComponent.ClubId.toString();
             if (this.Sname != "")
                 command1 += " and p.name like '%"+this.Sname+"%'";
             if (this.Ssurname != "")

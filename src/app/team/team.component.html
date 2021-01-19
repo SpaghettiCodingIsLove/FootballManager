@@ -4,19 +4,19 @@
             <div class="clubInfo">
                 <div class="row">
                     <p>Klub</p>
-                    <p id="clubName">00</p>
+                    <p id="clubName">{{club[0].Name}}</p>
                 </div>
                 <div class="row">
                     <p>Manager</p>
-                    <p id="clubManager">00</p>
+                    <p id="clubManager">{{club[0].Coach}}</p>
                 </div>
                 <div class="row">
                     <p>Budżet</p>
-                    <p id="clubBudget">00</p>
+                    <p id="clubBudget">{{club[0].Budget}}</p>
                 </div>
                 <div class="row">
                     <p>Tygodniówki</p>
-                    <p id="clubSalaryBudget">00</p>
+                    <p id="clubSalaryBudget">{{club[0].SalaryBudget}}</p>
                 </div>
             </div>
         </div>
@@ -70,14 +70,11 @@
                     <p id="Country">00</p>
                 </div>
                 <div class="row">
-                    <p>Data urodzenia</p>
+                    <p>Data ur.</p>
                     <p id="Birthday">00</p>
                 </div>
                 <div class="row">
-                    <p>00</p>
-                </div>
-                <div class="row">
-                    <p>Długość kontraktu</p>
+                    <p>Kontrakt</p>
                     <p id="Contract">00</p>
                 </div>
                 <div class="row">
@@ -103,19 +100,9 @@
             </div>
         </div>
         <div class="block">
-            <div class="Players">
-                <p>Imię</p>
-                <p>Nazwisko</p>
-                <p>Pozycja</p>
-                <p>Ocena</p>
-                <p>Skład</p>
-            </div>
-        </div>
-        <div class="block">
             <div class="buttons">
                 <button mat-raised-button color="primary" (click)="ExtendContract()">Negocjuj</button>
-                <button mat-raised-button color="primary">Wyczyść</button>
-                <button mat-raised-button color="primary">Zamień</button>
+                <button mat-raised-button color="primary" (click)="wyczysc()">Wyczyść</button>
             </div>
         </div>
     </div>
